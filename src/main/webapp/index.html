@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Unit Converter</title>
+<style>
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Hide sections by default */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+</style>
+</head>
+<body>
+<h1>Unit Converter</h1>
+
+<div class="topnav">
+  <a class="active" onclick="showSection('length')">Length</a>
+  <a onclick="showSection('weight')">Weight</a>
+  <a onclick="showSection('temperature')">Temperature</a>
+</div>
+
+<!-- Length Converter -->
+<div id="length" class="section active">
+  <h2>Length Converter</h2>
+  <form action="http://localhost:8083/Unit_converter/converter.jsp" method="get">
+    Enter the Length to convert :<br/>
+    <input type="number" name="length"><br/>
+    <label for="from">Unit to convert from:</label><br/>
+    <select id="from" name="from">
+      <option value="kilometre">kilometre</option>
+      <option value="metre">metre</option>
+      <option value="centimetre">centimetre</option>
+    </select><br/><br/>
+    <label for="to">Unit to convert to:</label><br/>
+    <select id="to" name="to">
+      <option value="kilometre">kilometre</option>
+      <option value="metre">metre</option>
+      <option value="centimetre">centimetre</option>
+    </select><br/><br/>
+    <input type="submit" value="Convert Length" name="convert">
+  </form>
+</div>
+
+<!-- Weight Converter -->
+<div id="weight" class="section">
+  <h2>Weight Converter</h2>
+  <form action="http://localhost:8083/Unit_converter/converter1.jsp" method="get">
+    Enter the Weight to convert:<br/>
+    <input type="number" name="weight" required><br/>
+    <label for="from1">Unit to convert from:</label><br/>
+    <select id="from" name="from">
+      <option value="kilogram">kilogram</option>
+      <option value="gram">gram</option>
+      <option value="milligram">milligram</option>
+    </select><br/><br/>
+    <label for="to1">Unit to convert to:</label><br/>
+    <select id="to" name="to">
+      <option value="kilogram">kilogram</option>
+      <option value="gram">gram</option>
+      <option value="milligram">milligram</option>
+    </select><br/><br/>
+    <input type="submit" value="Convert Weight" name="convert">
+  </form>
+</div>
+
+<!-- Temperature Converter -->
+<div id="temperature" class="section">
+  <h2>Temperature Converter</h2>
+  <form action="http://localhost:8083/Unit_converter/converter2.jsp" method="get">
+    Enter the Temperature to convert:<br/>
+    <input type="number" name="temperature" required><br/>
+    <label for="from2">Unit to convert from:</label><br/>
+    <select id="from" name="from">
+      <option value="Celsius">Celsius</option>
+      <option value="Fahrenheit">Fahrenheit</option>
+      <option value="Kelvin">Kelvin</option>
+    </select><br/><br/>
+    <label for="to2">Unit to convert to:</label><br/>
+    <select id="to" name="to">
+      <option value="Celsius">Celsius</option>
+      <option value="Fahrenheit">Fahrenheit</option>
+      <option value="Kelvin">Kelvin</option>
+    </select><br/><br/>
+    <input type="submit" value="Convert Temperature" name="convert">
+  </form>
+</div>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.topnav a');
+
+    sections.forEach(section => section.classList.remove('active'));
+    navLinks.forEach(link => link.classList.remove('active'));
+
+
+    document.getElementById(sectionId).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
